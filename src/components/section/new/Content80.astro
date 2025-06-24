@@ -1,0 +1,21 @@
+---
+import Content from "@/components/section/Content.astro";
+
+import { cn } from "@/lib/utils";
+
+type Props = {
+  class?: string;
+  containerClass?: string;
+  contentClass?: string;
+};
+const { class: className, containerClass, contentClass } = Astro.props;
+---
+
+<Content
+  class={className}
+  contentClass={cn("flex flex-col items-center", containerClass)}
+>
+  <div class={cn("px-2 sm:px-0", "w-full sm:w-[80%]", contentClass)}>
+    <slot />
+  </div>
+</Content>

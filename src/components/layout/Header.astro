@@ -1,0 +1,95 @@
+---
+import { config } from "@/config/main";
+
+import { cn } from "@/lib/utils";
+
+import { Icon } from "astro-icon/components";
+import { Button, buttonVariants } from "@/components/ui/button";
+
+import { HeaderNav } from "@/components/layout/HeaderNav";
+---
+
+<header class={cn("col-[fullbleed]", "grid grid-cols-subgrid", "text-white")}>
+  <section
+    class={cn(
+      "col-[fullbleed]",
+      "hidden sm:grid",
+      "grid-cols-subgrid",
+      "py-2",
+      "bg-[url(/images/textures/noise.svg)] bg-black/87 bg-blend-darken",
+    )}
+  >
+    <div class={cn("col-[content]", "flex justify-between")}>
+      <a
+        href={config.links.site.href}
+        class="font-bold font-distant-galaxy hidden lg:inline"
+        style={{ textDecorationLine: "none" }}
+      >
+        <span>{config.title}</span>
+      </a>
+
+      <address
+        class={cn(
+          "not-italic",
+          "flex gap-4",
+          "[&>a]:flex [&>a]:items-center [&>a]:gap-0.5",
+        )}
+      >
+        <a href={config.links.phone.href}>
+          <Icon name={config.links.phone.icon} />
+          <span>{config.links.phone.value}</span>
+        </a>
+        <a href={config.links.email.href}>
+          <Icon name={config.links.email.icon} />
+          <span>{config.links.email.value}</span>
+        </a>
+      </address>
+    </div>
+  </section>
+
+  <section
+    class={cn(
+      "col-[fullbleed]",
+      "grid grid-cols-subgrid",
+      "bg-[url(/images/textures/noise.svg)] bg-black/90 bg-blend-darken",
+    )}
+  >
+    <div
+      class={cn(
+        "col-[content]",
+        "flex gap-4 justify-between",
+        "px-4 2xl:px-0",
+        "py-4 xl:py-6",
+      )}
+    >
+      <!-- division height should be 16 -->
+      <a href="/" class="flex gap-4">
+        <img
+          class="h-12 sm:h-16 invert"
+          src="/images/logo/pacs_icon_350x300.png"
+          alt="PACS Logo"
+        />
+        <img
+          class="hidden sm:block h-12 invert self-end"
+          src="/images/logo/pacs_logo_extrasmall.png"
+          alt="PACS"
+        />
+      </a>
+
+      <div class={cn("flex items-center gap-4 sm:gap-8", "self-end")}>
+        <HeaderNav class="hidden xl:block" client:only="react" />
+        <Button asChild>
+          <a href={config.links.email.href} class={ buttonVariants({ variant: "secondary", size: "lg", className: "text-xl h-12 rounded-sm hover:no-underline" }) }>Get in touch</a>
+        </Button
+        >
+        <Button
+          variant="secondary"
+          size="lg"
+          className="block sm:hidden text-lg h-12 rounded-sm"
+        >
+          <Icon name="radix-icons:hamburger-menu" />
+        </Button>
+      </div>
+    </div>
+  </section>
+</header>

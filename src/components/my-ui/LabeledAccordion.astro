@@ -1,0 +1,51 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+
+import { Icon } from "astro-icon/components";
+import Header from "@/components/layout/Header.astro";
+import { Button } from "@/components/ui/button";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import Halfbleed from "@/components/section/Halfbleed.astro";
+import { Accordion } from "@/components/my-ui/accordion";
+import type { Item } from "@/config/pages/products";
+import { cn } from "@/lib/utils";
+
+type Props = {
+  class?: string;
+  title: string;
+  description: string;
+  list: {
+    className?: string;
+    items: Item[];
+  };
+};
+const { class: className, title, description, list } = Astro.props;
+---
+
+<div class={cn("flex flex-col gap-4", "row-start-1", className)}>
+  <h2>{title}</h2>
+  <p>{description}</p>
+  <ul
+    class={cn(
+      "[&>li]:grid [&>li]:grid-cols-[min-content_1fr] [&>li]:items-center [&>li]:gap-6",
+      "sm:[&>li]:gap-4",
+      "[&>li>*]:first:text-3xl",
+      "flex gap-2 flex-col",
+      "font-bold",
+    )}
+  >
+    <Accordion list={list} client:only="react" />
+  </ul>
+</div>

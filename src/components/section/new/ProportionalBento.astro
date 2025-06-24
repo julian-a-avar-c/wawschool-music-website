@@ -1,0 +1,118 @@
+---
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+const config = {
+  main: mainConfig,
+  page: pageConfig,
+};
+
+import { cn } from "@/lib/utils";
+import Bento from "@/components/my-ui/Bento.astro";
+
+type Props = {
+  class?: string;
+  title?: string;
+  description?: string;
+  items: {
+    imageIcon?: string;
+    title: string;
+    subtitle?: string;
+    description?: string;
+    href?: string;
+  }[];
+  rows:
+    | ({ default: number[] } & {
+        [key in "sm" | "md" | "lg" | "xl" | "2xl"]?: number[];
+      })
+    | number[];
+};
+
+const { class: className, title, description, items, rows } = Astro.props;
+---
+
+<!-- TODO: Replace with Content80 -->
+<section
+  class={cn(
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid",
+    "bg-[url(/images/textures/noise.svg)] bg-black/90 bg-blend-darken",
+    "text-white",
+    className,
+  )}
+>
+  <div class={cn("col-[content]", "flex flex-col items-center")}>
+    <div class="w-[80%] flex flex-col gap-16">
+      <slot name="title"/>
+      
+      {
+        Array.isArray(rows) ? (
+          <Bento items={items} rows={rows} />
+        ) : (
+          <>
+            {/* TODO: Refactor */}
+            <Bento
+              items={items}
+              rows={rows.default}
+              class={cn("flex", {
+                "sm:hidden": rows["sm"] !== undefined,
+                "md:hidden": rows["md"] !== undefined,
+                "lg:hidden": rows["lg"] !== undefined,
+                "xl:hidden": rows["xl"] !== undefined,
+                "2xl:hidden": rows["2xl"] !== undefined,
+              })}
+            />
+            {rows["sm"] && (
+              <Bento
+                items={items}
+                rows={rows["sm"]}
+                class={cn("hidden sm:flex", {
+                  "md:hidden": rows["md"] !== undefined,
+                  "lg:hidden": rows["lg"] !== undefined,
+                  "xl:hidden": rows["xl"] !== undefined,
+                  "2xl:hidden": rows["2xl"] !== undefined,
+                })}
+              />
+            )}
+            {rows["md"] && (
+              <Bento
+                items={items}
+                rows={rows["md"]}
+                class={cn("hidden md:flex", {
+                  "lg:hidden": rows["lg"] !== undefined,
+                  "xl:hidden": rows["xl"] !== undefined,
+                  "2xl:hidden": rows["2xl"] !== undefined,
+                })}
+              />
+            )}
+            {rows["lg"] && (
+              <Bento
+                items={items}
+                rows={rows["lg"]}
+                class={cn("hidden lg:flex", {
+                  "xl:hidden": rows["xl"] !== undefined,
+                  "2xl:hidden": rows["2xl"] !== undefined,
+                })}
+              />
+            )}
+            {rows["xl"] && (
+              <Bento
+                items={items}
+                rows={rows["xl"]}
+                class={cn("hidden xl:flex", {
+                  "2xl:hidden": rows["2xl"] !== undefined,
+                })}
+              />
+            )}
+            {rows["2xl"] && (
+              <Bento
+                items={items}
+                rows={rows["2xl"]}
+                class={cn("hidden 2xl:flex")}
+              />
+            )}
+          </>
+        )
+      }
+    </div>
+  </div>
+</section>

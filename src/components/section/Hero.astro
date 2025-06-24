@@ -1,0 +1,52 @@
+---
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+const config = {
+  main: mainConfig,
+  page: pageConfig,
+};
+
+import { HeroNavBreadcrumbs } from "@/components/section/HeroNavBreadcrumbs";
+
+import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
+
+type Props = {
+  key: string;
+  title: string;
+  nav: { href?: string; node: ReactNode }[];
+  class?: string;
+};
+const { key, title, nav, class: className } = Astro.props;
+---
+
+<section
+  class={cn(
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid lg:gap-8",
+    "bg-[url(/images/IMG_2252.JPEG)] bg-[50%_20%] sm:bg-[50%_10%] 2xl:bg-[50%_0%] bg-fixed",
+    className,
+  )}
+>
+  <div
+    class={cn(
+      "col-[content]",
+      "flex flex-col",
+      "lg:gap-4 xl:gap-8",
+      "py-8 sm:py-16 xl:py-24 2xl:py-32",
+      "bg-background/10 backdrop-blur-sm",
+      "items-center justify-items-center",
+    )}
+  >
+    <h1 class={cn("font-bold", "text-5xl sm:4xl md:text-5xl 2xl:text-6xl")}>
+      {title}
+    </h1>
+
+    <HeroNavBreadcrumbs
+      itemKey={key}
+      items={nav}
+      className="text-xl"
+      client:only="react"
+    />
+  </div>
+</section>

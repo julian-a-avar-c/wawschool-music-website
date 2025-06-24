@@ -1,0 +1,124 @@
+---
+// import "@fontsource/atkinson-hyperlegible-next/200.css";
+// import "@fontsource/atkinson-hyperlegible-next/300.css";
+// import "@fontsource/atkinson-hyperlegible-next/400.css";
+// import "@fontsource/atkinson-hyperlegible-next/500.css";
+// import "@fontsource/atkinson-hyperlegible-next/600.css";
+// import "@fontsource/atkinson-hyperlegible-next/700.css";
+// import "@fontsource/atkinson-hyperlegible-next/800.css";
+// import "@fontsource/atkinson-hyperlegible-next/200-italic.css";
+// import "@fontsource/atkinson-hyperlegible-next/300-italic.css";
+// import "@fontsource/atkinson-hyperlegible-next/400-italic.css";
+// import "@fontsource/atkinson-hyperlegible-next/500-italic.css";
+// import "@fontsource/atkinson-hyperlegible-next/600-italic.css";
+// import "@fontsource/atkinson-hyperlegible-next/700-italic.css";
+// import "@fontsource/atkinson-hyperlegible-next/800-italic.css";
+
+// import "@fontsource/lato/100.css";
+// import "@fontsource/lato/300.css";
+// import "@fontsource/lato/400.css";
+// import "@fontsource/lato/700.css";
+// import "@fontsource/lato/900.css";
+// import "@fontsource/lato/100-italic.css";
+// import "@fontsource/lato/300-italic.css";
+// import "@fontsource/lato/400-italic.css";
+// import "@fontsource/lato/700-italic.css";
+// import "@fontsource/lato/900-italic.css";
+
+import "@fontsource/gentium-book-plus/400.css";
+import "@fontsource/gentium-book-plus/700.css";
+import "@fontsource/gentium-book-plus/400-italic.css";
+import "@fontsource/gentium-book-plus/700-italic.css";
+
+// import "@fontsource-variable/montserrat";
+// import "@fontsource-variable/montserrat/wght-italic.css";
+
+// import "@fontsource-variable/manrope";
+
+// import "@fontsource-variable/open-sans";
+// import "@fontsource-variable/open-sans/wght-italic.css";
+
+// import "@fontsource-variable/inter";
+// import "@fontsource-variable/inter/wght-italic.css";
+
+import "@fontsource-variable/lexend";
+import lexendWoff2 from "@fontsource-variable/lexend/files/lexend-latin-wght-normal.woff2";
+
+import "@/styles/global.css";
+import { config } from "@/config/main";
+import { cn } from "@/lib/utils";
+import LinkedInCookies from "@/scripts/LinkedInCookies.astro";
+
+type Props = {
+  title: string;
+  class: string;
+};
+const { title, class: className } = Astro.props;
+
+const documentTitle =
+  title === config.shortTitle
+    ? config.shortTitle
+    : config.shortTitle + (title === undefined ? "" : ` - ${title}`);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <link rel="icon" type="image/png" href="/images/logo/pacs_icon_64x64.png" />
+    <link rel="preload" as="font" type="font/woff2" href={lexendWoff2} crossorigin="anonymous" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{documentTitle}</title>
+  </head>
+  <body class={cn("bg-background font-lexend", className)}>
+    <slot />
+  </body>
+
+  <LinkedInCookies />
+</html>
+
+<style lang="scss">
+  html,
+  body {
+    margin: 0px;
+    width: 100%;
+  }
+  body {
+    display: grid;
+    grid-template-columns:
+      [fullbleed-start]
+      var(--bleed-width)
+      [content-start]
+      var(--content-width)
+      [content-end]
+      var(--bleed-width)
+      [fullbleed-end];
+
+    @media (width <= 40rem) {
+      --bleed-width: 4px;
+      --content-width: calc(100%-var(--bleed-width));
+    }
+    @media (40rem <= width <= 48rem) {
+      --bleed-width: 1fr;
+      --content-width: 40rem /* 640px */;
+    }
+    @media (48rem <= width <= 64rem) {
+      --bleed-width: 1fr;
+      --content-width: 48rem /* 768px */;
+    }
+    @media (64rem <= width <= 80rem) {
+      --bleed-width: 1fr;
+      --content-width: 64rem /* 1024px */;
+    }
+    @media (80rem <= width <= 96rem) {
+      --bleed-width: 1fr;
+      --content-width: 80rem /* 1280px */;
+    }
+    @media (96rem <= width) {
+      --bleed-width: 1fr;
+      --content-width: 96rem /* 1536px */;
+    }
+  }
+</style>

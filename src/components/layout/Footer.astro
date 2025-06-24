@@ -1,0 +1,112 @@
+---
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+const config = {
+  main: mainConfig,
+  page: pageConfig,
+};
+
+import { cn } from "@/lib/utils";
+
+import { Icon } from "astro-icon/components";
+---
+
+<footer
+  class={cn(
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid",
+    "bg-black text-white",
+    "py-(--section-padding)",
+  )}
+>
+  <div
+    class={cn(
+      "col-[content]",
+      "flex flex-col-reverse",
+      "2xl:grid 2xl:grid-cols-4",
+      "gap-16",
+      "[&_h2,&_h3]:font-extrabold",
+      "[&_li]:pl-[1ch]",
+      "[&_ul]:flex [&_ul]:flex-col",
+    )}
+  >
+    <div class="flex flex-col gap-2">
+      <img src="/images/logo/pacs_logo.png" alt="Logo" class="invert" />
+      <div class="flex gap-2">
+        <div class="flex flex-col gap-2">
+          <a
+            href={config.main.links.phone.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex gap-2 items-center"
+          >
+            <Icon name={config.main.links.phone.icon} />
+            <span>{config.main.links.phone.value}</span>
+          </a>
+          <a
+            href={config.main.links.email.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex gap-2 items-center"
+          >
+            <Icon name={config.main.links.email.icon} />
+            <span>{config.main.links.email.value}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class={cn(
+        "flex flex-col gap-4",
+        "[&>div]:flex [&>div]:flex-col [&>div]:gap-2",
+      )}
+    >
+      <h2>Products</h2>
+
+      <div>
+        <h3>{config.main.nav.products.liquidLubricants.item.title}</h3>
+        <ul>
+          {
+            config.main.nav.products.liquidLubricants.items.map((product) => (
+              <li>
+                <a href={product.href}>{product.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <h3>{config.main.nav.products.greases.item.title}</h3>
+        <ul>
+          {
+            config.main.nav.products.greases.items.map((product) => (
+              <li>
+                <a href={product.href}>{product.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="flex flex-col gap-2">
+      <h2>{config.main.nav.services.item.title}</h2>
+
+      <ul>
+        {
+          config.main.nav.services.items.map((service) => (
+            <li>
+              <a href={service.href}>{service.title}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="">
+      <h2>Join the pack!</h2>
+    </div>
+  </div>
+</footer>

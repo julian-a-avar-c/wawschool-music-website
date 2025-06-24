@@ -1,0 +1,67 @@
+---
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+const config = {
+  main: mainConfig,
+  page: pageConfig,
+};
+
+import { cn, groupItemsByRows } from "@/lib/utils";
+
+type Props = {
+  class?: string;
+  items: {
+    imageIcon?: string;
+    title: string;
+    subtitle?: string;
+    description?: string;
+    href?: string
+  }[];
+  rows: number[];
+};
+
+const { class: className, items, rows } = Astro.props;
+---
+
+<div class={cn("flex flex-col gap-4", className)}>
+  {
+    groupItemsByRows(items, rows)
+      .map((items, rowIndex) => (
+        <div
+          class={cn("grid", "content-stretch", "gap-4")}
+          style={{
+            gridTemplateColumns: Array.from(
+              Array(items.length).fill("1fr"),
+            ).join(" "),
+          }}
+        >
+          {items.map((item) => (
+            // TODO: Optional href
+            <a
+              href={item.href}
+              class={cn(
+                "h-48 dark-gray-gradient",
+                "rounded-lg",
+                "shadow-lg",
+                "p-4 gap-y-4",
+                "flex flex-col",
+              )}
+            >
+              <div class="flex flex-col">
+                <div class="flex gap-x-2">
+                  {item.imageIcon && (
+                    <img src={item.imageIcon} class="size-12" />
+                  )}
+                  <h2 class="font-bold text-2xl">{item.title}</h2>
+                </div>
+                {item.subtitle && (
+                  <h3 class="text-white/75 text-xl">{item.subtitle}</h3>
+                )}
+              </div>
+              {item.description && <p class="text-lg/6">{item.description}</p>}
+            </a>
+          ))}
+        </div>
+      ))
+  }
+</div>

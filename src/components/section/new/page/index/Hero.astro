@@ -1,0 +1,83 @@
+---
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+const config = {
+  main: mainConfig,
+  page: pageConfig,
+};
+
+import { cn } from "@/lib/utils";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class={cn(
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid",
+    "bg-[url(/images/textures/noise.svg)] bg-black/90 bg-blend-darken",
+    "text-white"
+  )}
+>
+  <div
+    class={cn(
+      "bg-[url(/images/IMG_2252.JPEG)] bg-fixed bg-cover bg-[0%_50%]",
+      "col-[content]",
+      "rounded-2xl",
+      "shadow-lg"
+    )}
+  >
+    <!-- Inline block for making sure content is within width of title -->
+    <div
+      class={cn(
+        "p-4 xl:p-24",
+        "rounded-2xl",
+        "inline-block",
+        "bg-linear-to-r from-black/90 to-transparent",
+        "pb-(--section-padding)"
+      )}
+    >
+      <img src="/images/logo/pacs_logo.png" alt="Logo" class="invert pb-2 md:max-w-[600px]" />
+
+      <div class={cn("flex flex-col gap-8", "w-0 min-w-full")}>
+        <p class="text-lg">
+          PACS provides consulting services and innovative industrial
+          engineering solutions, specializing in the design of blending and
+          manufacturing plants, equipment, and turnkey project delivery for oil
+          and gas companies worldwide.
+        </p>
+
+        <div
+          class={cn(
+            "flex flex-col sm:flex-row gap-4 sm:gap-8",
+            "[&>a]:text-xl [&>a]:h-12 [&>a]:no-underline"
+          )}
+        >
+          <Button asChild>
+            <a
+              href={config.main.links.email.href}
+              class={cn(
+                buttonVariants({ variant: "secondary", size: "lg" }),
+                "rounded-sm"
+              )}>Talk to Sales</a
+            >
+          </Button>
+          <Button asChild>
+            <a
+              href={config.main.links.linkedin.href}
+              class={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "rounded-sm bg-transparent",
+                "flex"
+              )}
+            >
+              <Icon name="fa6-brands:linkedin-in" />
+              <span>Connect!</span>
+            </a>
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

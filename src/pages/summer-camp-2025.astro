@@ -1,0 +1,83 @@
+---
+import { config as mainConfig } from "@/config/main";
+import { config as pageConfig } from "@/config/pages/index";
+const config = {
+  main: mainConfig,
+  page: pageConfig,
+};
+
+import { cn } from "@/lib/utils";
+
+import Layout from "@/layouts/Layout.astro";
+import Header from "@/components/layout/Header.astro";
+import Footer from "@/components/layout/Footer.astro";
+
+import HalfAndHalf from "@/components/section/HalfAndHalf.astro";
+import Content80 from "@/components/section/new/Content80.astro";
+import ProportionalBento from "@/components/section/new/ProportionalBento.astro";
+
+import Hero from "@/components/section/new/page/index/Hero.astro";
+
+import { Icon } from "astro-icon/components";
+import { Button } from "@/components/ui/button";
+import { Accordion } from "@/components/my-ui/accordion";
+import { LogoBelt } from "@/components/section/new/LogoBelt";
+import LabeledAccordion from "@/components/my-ui/LabeledAccordion.astro";
+import BandSignUpForm from "@/components/my-ui/band-sign-up-form";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/my-ui/carousel";
+import { GalleryCarousel } from "@/components/my-ui/GalleryCarousel";
+---
+
+<Layout title="WAW Music School Camp" class={cn("w-full")}>
+  <!-- <Header /> -->
+
+  <main class={cn("col-[fullbleed]", "grid grid-cols-subgrid")}>
+    <Content80>
+      <div class="flex flex-col py-4 gap-y-4">
+        <img src="/logo.jpeg" class="max-w-[600px] self-center" />
+        <div class="text-3xl text-center">Join us for Summer Music Fun!</div>
+        <h1 class="text-7xl text-center">Waw Music's Summer Camp is back!</h1>
+      </div>
+
+      <p class="text-center">
+        Explore music, rhythm, and creativity in a nurturing, performance-free
+        environment led by Carla Campopiano and the WAW team.
+      </p>
+
+      <div class="grid grid-cols-2">
+        <ul>
+          <li>June 30&ndash;July 2</li>
+          <li>9am&ndash;3pm</li>
+        </ul>
+        <div>
+          <ul>
+            <li>
+              <a href="https://www.carlacampopiano.com"
+                ><Icon class="inline" name="fa6-solid:globe" /> carlacampopiano.com</a
+              >
+            </li>
+            <li>
+              <a href="https://www.instagram.com"
+                ><Icon class="inline" name="fa6-brands:instagram" /> @WAWmusicschool</a
+              >
+            </li>
+          </ul>
+          <div>
+            <Button>sign up</Button> today!
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2">
+        <GalleryCarousel client:only="react"/>
+        <BandSignUpForm client:only="react" />
+      </div>
+    </Content80>
+  </main>
+</Layout>
+
+<!-- <Footer /> -->

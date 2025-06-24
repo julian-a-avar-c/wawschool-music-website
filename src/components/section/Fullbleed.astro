@@ -1,0 +1,15 @@
+---
+import { cn } from "@/lib/utils";
+
+/**
+ * A section with a grid-line going through the middle. Fullbleed length.
+ */
+type Props = {
+  class?: string;
+};
+const { class: className } = Astro.props;
+---
+
+<section class={cn("col-[fullbleed]", "grid grid-cols-subgrid", className)}>
+  <slot />
+</section>
