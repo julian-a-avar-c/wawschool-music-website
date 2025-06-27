@@ -26,31 +26,33 @@ import { supabase } from "@/lib/supabase";
 import { useState } from "react";
 import { toast } from "sonner";
 
+const formSchema = z.object({
+  guardian_first: z.string().min(1, "Guardian first name is required"),
+  guardian_last: z.string().min(1, "Guardian last name is required"),
+  phone: z.string().min(1, "Phone number is required"),
+  alt_phone: z.string().optional(),
+  email: z.string().email("Please enter a valid email address"),
+  student_first: z.string().min(1, "Student first name is required"),
+  student_last: z.string().min(1, "Student last name is required"),
+  student_age: z
+    .number()
+    .min(1, "Student age is required")
+    .max(18, "Student must be 18 or under"),
+  instrument: z.string().min(1, "Please select an instrument"),
+  is_online: z.boolean(),
+  allergies: z.string().optional(),
+  privacy: z
+    .boolean()
+    .refine((val) => val === true, "You must agree to the privacy policy"),
+});
+
+type FormSchema = z.infer<typeof formSchema>;
+
 export default function BandSignUpForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
-  const formSchema = z.object({
-    guardian_first: z.string().min(1, "Guardian first name is required"),
-    guardian_last: z.string().min(1, "Guardian last name is required"),
-    phone: z.string().min(1, "Phone number is required"),
-    alt_phone: z.string().optional(),
-    email: z.string().email("Please enter a valid email address"),
-    student_first: z.string().min(1, "Student first name is required"),
-    student_last: z.string().min(1, "Student last name is required"),
-    student_age: z
-      .number()
-      .min(1, "Student age is required")
-      .max(18, "Student must be 18 or under"),
-    instrument: z.string().min(1, "Please select an instrument"),
-    is_online: z.boolean().default(false),
-    allergies: z.string().optional(),
-    privacy: z
-      .boolean()
-      .refine((val) => val === true, "You must agree to the privacy policy"),
-  });
-
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormSchema>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       guardian_first: "",
@@ -68,7 +70,7 @@ export default function BandSignUpForm() {
     },
   });
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: FormSchema) {
     setIsSubmitting(true);
 
     try {
@@ -274,41 +276,26 @@ export default function BandSignUpForm() {
             name="instrument"
             render={({ field }) => (
               <FormItem>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select an instrument" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="piano">Piano</SelectItem>
-                    <SelectItem value="guitar">Guitar</SelectItem>
-                    <SelectItem value="violin">Violin</SelectItem>
-                    <SelectItem value="drums">Drums</SelectItem>
-                    <SelectItem value="voice">Voice</SelectItem>
-                    <SelectItem value="bass">Bass</SelectItem>
-                    <SelectItem value="ukulele">Ukulele</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="allergies"
-            render={({ field }) => (
-              <FormItem>
                 <FormControl>
-                  <Textarea
-                    placeholder="Any allergies or special considerations (optional)"
-                    {...field}
-                  />
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Select primary instrument" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="guitar">Guitar</SelectItem>
+                      <SelectItem value="bass">Bass</SelectItem>
+                      <SelectItem value="drums">Drums</SelectItem>
+                      <SelectItem value="keyboard">Keyboard/Piano</SelectItem>
+                      <SelectItem value="vocals">Vocals</SelectItem>
+                      <SelectItem value="violin">Violin</SelectItem>
+                      <SelectItem value="saxophone">Saxophone</SelectItem>
+                      <SelectItem value="trumpet">Trumpet</SelectItem>
+                      <SelectItem value="other">Other</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -329,41 +316,64 @@ export default function BandSignUpForm() {
                 <div className="space-y-1 leading-none">
                   <FormLabel>Interested in online lessons</FormLabel>
                   <FormDescription>
-                    Check this if you'd like information about online music
-                    lessons
+                    Check if you're interested in online lesson options
                   </FormDescription>
+                </div>
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="allergies"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Allergies or Medical Conditions</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Please list any allergies or medical conditions we should be aware of (optional)"
+                    className="min-h-[80px]"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="space-y-4">
+          <FormField
+            control={form.control}
+            name="privacy"
+            render={({ field }) => (
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+                <FormControl>
+                  <Checkbox
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+                <div className="space-y-1 leading-none">
+                  <FormLabel>Privacy Policy Agreement *</FormLabel>
+                  <FormDescription>
+                    I agree to the privacy policy and terms of service
+                  </FormDescription>
+                  <FormMessage />
                 </div>
               </FormItem>
             )}
           />
         </div>
 
-        <FormField
-          control={form.control}
-          name="privacy"
-          render={({ field }) => (
-            <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-              <FormControl>
-                <Checkbox
-                  checked={field.value}
-                  onCheckedChange={field.onChange}
-                />
-              </FormControl>
-              <div className="space-y-1 leading-none">
-                <FormLabel>I agree to the privacy policy *</FormLabel>
-                <FormDescription>
-                  By checking this box, you agree to our privacy policy and
-                  terms of service
-                </FormDescription>
-              </div>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Register for Summer Camp"}
-        </Button>
+        <div className="flex gap-4">
+          <Button type="submit" disabled={isSubmitting} className="flex-1">
+            {isSubmitting ? "Submitting..." : "Submit Registration"}
+          </Button>
+          <Button type="reset" variant="outline">
+            Reset Form
+          </Button>
+        </div>
       </form>
     </Form>
   );

@@ -23,7 +23,7 @@ import { Button } from "@/components/ui/button";
 import { Accordion } from "@/components/my-ui/accordion";
 import { LogoBelt } from "@/components/section/new/LogoBelt";
 import LabeledAccordion from "@/components/my-ui/LabeledAccordion.astro";
-import BandSignUpForm from "@/components/my-ui/band-sign-up-form";
+import BandSignUpForm from "@/components/my-ui/band-signup-form";
 import {
   Carousel,
   CarouselContent,
@@ -33,24 +33,7 @@ import { GalleryCarousel } from "@/components/my-ui/GalleryCarousel";
 
 import { supabase } from "@/lib/supabase";
 
-const { data, error } = await supabase
-  .from("summer-camp-2025-funnel")
-  .insert([
-    {
-      guardian_first: "",
-      guardian_last: "",
-      phone: "",
-      alt_phone: "",
-      email: "",
-      student_first: "",
-      student_last: "",
-      student_age: 0,
-      instrument: "",
-      is_online: false,
-      allergies: "",
-    },
-  ])
-  .select();
+// Removed unnecessary insert operation that was causing RLS policy violation
 ---
 
 <Layout title="WAW Music School Camp" class={cn("w-full")}>
@@ -69,12 +52,20 @@ const { data, error } = await supabase
         environment led by Carla Campopiano and the WAW team.
       </p>
 
-      <div class="flex flex-col lg:grid grid-cols-2">
-        <div>
-          <ul>
-            <li>June 30&ndash;July 2</li>
-            <li>9am&ndash;3pm</li>
-          </ul>
+      <div class="flex flex-col lg:grid grid-cols-2 gap-16 lg:items-start">
+        <div class="flex flex-col max-h-full">
+          <div class="flex items-start gap-2">
+            <a
+              href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//WAW Music School//Summer Camp//EN%0ABEGIN:VEVENT%0ADTSTART:20250630T090000%0ADTEND:20250702T150000%0ASUMMARY:WAW Music's Summer Camp%0ADESCRIPTION:Explore music, rhythm, and creativity in a nurturing, performance-free environment led by Carla Campopiano and the WAW team.%0AEND:VEVENT%0AEND:VCALENDAR"
+              download="waw-summer-camp-2025.ics"
+            >
+              <Icon class="inline text-xl" name="fa6-solid:calendar" />
+              <ul>
+                <li>June 30&ndash;July 2</li>
+                <li>9am&ndash;3pm</li>
+              </ul>
+            </a>
+          </div>
           <ul>
             <li>
               <a href="https://www.carlacampopiano.com"
@@ -87,7 +78,9 @@ const { data, error } = await supabase
               >
             </li>
           </ul>
-          <GalleryCarousel client:only="react" />
+          <div class="flex-1 overflow-hidden">
+            <GalleryCarousel client:only="react" />
+          </div>
         </div>
 
         <BandSignUpForm client:only="react" />
