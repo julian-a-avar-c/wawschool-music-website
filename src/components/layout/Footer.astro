@@ -4,8 +4,14 @@ import { Icon } from "astro-icon/components";
 ---
 
 <footer
-  class={cn("col-[fullbleed]", "grid grid-cols-subgrid", "text-white", "py-12")}
-  style="background-color: #d14f4f;"
+  class={cn(
+    "col-[fullbleed]",
+    "grid grid-cols-subgrid",
+    "text-white",
+    "py-16",
+    "bg-gradient-to-br",
+  )}
+  style="background: linear-gradient(135deg, #d14f4f 0%, #e86b6b 50%, #d14f4f 100%);"
 >
   <div
     class={cn(
@@ -16,51 +22,58 @@ import { Icon } from "astro-icon/components";
     )}
   >
     <!-- Music School Info -->
-    <div class="flex flex-col items-center md:items-start gap-4">
-      <div class="text-2xl font-bold">WAW Music School</div>
-      <div
-        class="flex flex-col items-center md:items-start gap-2 text-sm opacity-90"
-      >
+    <div
+      class="flex flex-col items-center md:items-start gap-6 p-6 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20"
+    >
+      <div class="text-3xl font-bold flex items-center gap-3">
+        🎵 WAW Music School 🎵
+      </div>
+      <div class="flex flex-col items-center md:items-start gap-3 text-base">
         <a
           href="https://www.carlacampopiano.com"
-          class="flex items-center gap-2 hover:opacity-75 transition-opacity"
+          class="flex items-center gap-3 hover:scale-105 transition-all duration-200 bg-white/20 px-4 py-2 rounded-full"
         >
-          <Icon name="fa6-solid:globe" class="text-sm" />
-          carlacampopiano.com
+          <Icon name="fa6-solid:globe" class="text-lg" />
+          🌐 carlacampopiano.com
         </a>
         <a
           href="https://www.instagram.com/WAWmusicschool"
-          class="flex items-center gap-2 hover:opacity-75 transition-opacity"
+          class="flex items-center gap-3 hover:scale-105 transition-all duration-200 bg-white/20 px-4 py-2 rounded-full"
         >
-          <Icon name="fa6-brands:instagram" class="text-sm" />
-          @WAWmusicschool
+          <Icon name="fa6-brands:instagram" class="text-lg" />
+          📸 @WAWmusicschool
         </a>
       </div>
     </div>
 
     <!-- Email Signup Form -->
     <div
-      class="flex flex-col items-center md:items-end gap-4 max-w-md w-full md:w-auto"
+      class="flex flex-col items-center md:items-end gap-6 max-w-md w-full md:w-auto p-6 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20"
     >
       <div class="text-center md:text-right">
-        <h3 class="text-lg font-semibold mb-2">Stay in the Loop!</h3>
-        <p class="text-sm opacity-90">
-          Get notified about upcoming events and music programs
+        <h3
+          class="text-2xl font-bold mb-3 flex items-center justify-center md:justify-end gap-2"
+        >
+          ✨ Stay in the Musical Loop! ✨
+        </h3>
+        <p class="text-base">
+          🎶 Join our awesome community and be the first to know about amazing
+          events and fun music programs! 💫
         </p>
       </div>
 
-      <form class="flex flex-col sm:flex-row gap-2 w-full">
+      <form class="flex flex-col sm:flex-row gap-3 w-full">
         <input
           type="email"
-          placeholder="Enter your email"
+          placeholder="✉️ Your email for musical updates!"
           required
-          class="flex-1 px-4 py-2 rounded-lg border-0 text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-white focus:outline-none"
+          class="flex-1 px-6 py-4 rounded-2xl border-2 border-white/30 text-gray-900 placeholder-gray-500 focus:ring-4 focus:ring-white/50 focus:outline-none focus:scale-105 transition-all duration-200 bg-white/95"
         />
         <button
           type="submit"
-          class="px-6 py-2 bg-white text-[#d14f4f] font-semibold rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap"
+          class="px-8 py-4 bg-white text-[#d14f4f] font-bold rounded-2xl hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg whitespace-nowrap border-2 border-white"
         >
-          Sign Up
+          🚀 Join the Fun!
         </button>
       </form>
     </div>
@@ -68,8 +81,13 @@ import { Icon } from "astro-icon/components";
 
   <!-- Copyright -->
   <div
-    class="col-[content] mt-8 pt-6 border-t border-white/20 text-center text-sm opacity-75"
+    class="col-[content] mt-12 pt-8 border-t border-white/30 text-center text-base"
   >
-    © 2025 WAW Music School. All rights reserved.
+    <div class="flex items-center justify-center gap-2 mb-2">
+      🎸 Made with love for music lovers everywhere 🎵
+    </div>
+    <div class="opacity-80">
+      © 2025 WAW Music School. All rights reserved. Keep on rocking! 🤘
+    </div>
   </div>
 </footer>

@@ -34,18 +34,20 @@ type Props = {
 const { class: className, title, description, list } = Astro.props;
 ---
 
-<div class={cn("flex flex-col gap-4", "row-start-1", className)}>
-  <h2>{title}</h2>
-  <p>{description}</p>
-  <ul
-    class={cn(
-      "[&>li]:grid [&>li]:grid-cols-[min-content_1fr] [&>li]:items-center [&>li]:gap-6",
-      "sm:[&>li]:gap-4",
-      "[&>li>*]:first:text-3xl",
-      "flex gap-2 flex-col",
-      "font-bold",
-    )}
-  >
+<div
+  class={cn(
+    "flex flex-col gap-8",
+    "row-start-1",
+    "p-6 rounded-3xl bg-gradient-to-br from-orange-50 to-red-50 border-2 border-[#d14f4f]/30 shadow-xl",
+    className,
+  )}
+>
+  <div class="text-center">
+    <div class="text-4xl mb-4">🎵</div>
+    <h2 class="text-3xl font-bold text-[#d14f4f] mb-3">{title}</h2>
+    <p class="text-lg text-red-600 leading-relaxed">{description}</p>
+  </div>
+  <div class="space-y-4">
     <Accordion list={list} client:only="react" />
-  </ul>
+  </div>
 </div>

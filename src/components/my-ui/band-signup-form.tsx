@@ -117,17 +117,37 @@ export default function BandSignUpForm() {
 
   if (submitSuccess) {
     return (
-      <div className="p-8 text-center border rounded-lg bg-green-50 border-green-200">
-        <h3 className="text-lg font-semibold text-green-800 mb-2">
-          Registration Submitted!
-        </h3>
-        <p className="text-green-700 mb-4">
-          Thank you for registering for WAW Music's Summer Camp. We'll be in
-          touch soon!
-        </p>
-        <Button onClick={onReset} variant="outline">
-          Submit Another Registration
-        </Button>
+      <div>
+        <div className="p-8 text-center border-2 rounded-3xl bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
+          <div className="text-6xl mb-4">🎉</div>
+          <h3 className="text-2xl font-bold text-green-700 mb-3">
+            Woohoo! You're All Set! 🎵
+          </h3>
+          <p className="text-green-600 mb-6 text-lg">
+            Thanks for joining our musical adventure! We can't wait to rock out
+            with you at WAW Music's Summer Camp. Keep an eye on your inbox -
+            we'll be sending some exciting details your way soon! 🎸✨
+          </p>
+          <Button
+            onClick={onReset}
+            variant="outline"
+            className="rounded-full px-8 py-3 text-lg font-semibold hover:scale-105 transition-transform"
+          >
+            🌟 Register Another Rockstar!
+          </Button>
+        </div>
+        <div className="p-8 text-center border rounded-lg bg-green-50 border-green-200">
+          <h3 className="text-lg font-semibold text-green-800 mb-2">
+            Registration Submitted!
+          </h3>
+          <p className="text-green-700 mb-4">
+            Thank you for registering for WAW Music's Summer Camp. We'll be in
+            touch soon!
+          </p>
+          <Button onClick={onReset} variant="outline">
+            Submit Another Registration
+          </Button>
+        </div>
       </div>
     );
   }
@@ -137,10 +157,19 @@ export default function BandSignUpForm() {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         onReset={onReset}
-        className="space-y-6 @container"
+        className="space-y-8 @container p-6 rounded-3xl bg-gradient-to-br from-orange-50 to-red-50 border-2 border-[#d14f4f]/30 shadow-xl"
       >
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Guardian Information</h3>
+        <div className="space-y-6">
+          <div className="text-center">
+            <div className="text-4xl mb-2">👨‍👩‍👧‍👦</div>
+            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2">
+              Tell Us About Your Family! 💫
+            </h3>
+            <p className="text-red-600">
+              We'd love to get to know the awesome guardian behind this future
+              rockstar!
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 gap-4">
             <FormField
@@ -149,7 +178,11 @@ export default function BandSignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Guardian first name" {...field} />
+                    <Input
+                      placeholder="What should we call you? (First name)"
+                      className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -162,7 +195,11 @@ export default function BandSignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Guardian last name" {...field} />
+                    <Input
+                      placeholder="Your family name"
+                      className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -177,8 +214,9 @@ export default function BandSignUpForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Primary phone number"
+                    placeholder="📞 Your best phone number"
                     type="tel"
+                    className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                     {...field}
                   />
                 </FormControl>
@@ -194,8 +232,9 @@ export default function BandSignUpForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Alternative phone number (optional)"
+                    placeholder="📱 Got another number? (totally optional!)"
                     type="tel"
+                    className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                     {...field}
                   />
                 </FormControl>
@@ -210,7 +249,12 @@ export default function BandSignUpForm() {
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <Input placeholder="Email address" type="email" {...field} />
+                  <Input
+                    placeholder="📧 Your email (where we'll send the fun stuff!)"
+                    type="email"
+                    className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -218,8 +262,16 @@ export default function BandSignUpForm() {
           />
         </div>
 
-        <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Student Information</h3>
+        <div className="space-y-6">
+          <div className="text-center">
+            <div className="text-4xl mb-2">🎸</div>
+            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2">
+              Now, About Our Future Rockstar! 🌟
+            </h3>
+            <p className="text-red-600">
+              Time to learn about the amazing student who's ready to rock!
+            </p>
+          </div>
 
           <div className="grid grid-cols-2 gap-4">
             <FormField
@@ -228,7 +280,11 @@ export default function BandSignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Student first name" {...field} />
+                    <Input
+                      placeholder="Student's awesome first name"
+                      className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -241,7 +297,11 @@ export default function BandSignUpForm() {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Student last name" {...field} />
+                    <Input
+                      placeholder="Student's last name"
+                      className="rounded-2xl border-2 border-purple-200 focus:border-purple-400 py-3"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -256,10 +316,11 @@ export default function BandSignUpForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="Student age"
+                    placeholder="🎂 How old is our future star?"
                     type="number"
                     min="1"
                     max="18"
+                    className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                     {...field}
                     onChange={(e) =>
                       field.onChange(parseInt(e.target.value) || 0)
@@ -281,8 +342,8 @@ export default function BandSignUpForm() {
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select primary instrument" />
+                    <SelectTrigger className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3">
+                      <SelectValue placeholder="🎵 What instrument makes their heart sing?" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="guitar">Guitar</SelectItem>
@@ -306,17 +367,21 @@ export default function BandSignUpForm() {
             control={form.control}
             name="is_online"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4 rounded-2xl bg-gradient-to-r from-orange-50 to-red-50 border-2 border-[#d14f4f]/30">
                 <FormControl>
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
+                    className="rounded-lg"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Interested in online lessons</FormLabel>
-                  <FormDescription>
-                    Check if you're interested in online lesson options
+                  <FormLabel className="text-[#d14f4f] font-semibold">
+                    💻 Online lessons sound cool too!
+                  </FormLabel>
+                  <FormDescription className="text-red-600">
+                    Would you like to explore online lesson options? We make
+                    virtual learning super fun! 🌐✨
                   </FormDescription>
                 </div>
               </FormItem>
@@ -328,11 +393,13 @@ export default function BandSignUpForm() {
             name="allergies"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Allergies or Medical Conditions</FormLabel>
+                <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
+                  🏥 Keeping Everyone Safe & Happy
+                </FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Please list any allergies or medical conditions we should be aware of (optional)"
-                    className="min-h-[80px]"
+                    placeholder="Any allergies or medical info we should know about? We want to make sure everyone has the best, safest time! (totally optional, but helpful) 💜"
+                    className="min-h-[100px] rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f]"
                     {...field}
                   />
                 </FormControl>
@@ -342,22 +409,26 @@ export default function BandSignUpForm() {
           />
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           <FormField
             control={form.control}
             name="privacy"
             render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0">
+              <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4 rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 border-2 border-[#d14f4f]/30">
                 <FormControl>
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
+                    className="rounded-lg"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel>Privacy Policy Agreement *</FormLabel>
-                  <FormDescription>
-                    I agree to the privacy policy and terms of service
+                  <FormLabel className="text-[#d14f4f] font-semibold">
+                    🤝 Let's Make This Official! *
+                  </FormLabel>
+                  <FormDescription className="text-red-600">
+                    I'm excited to agree to the privacy policy and terms of
+                    service - let's rock together safely! 🎸💫
                   </FormDescription>
                   <FormMessage />
                 </div>
@@ -366,12 +437,20 @@ export default function BandSignUpForm() {
           />
         </div>
 
-        <div className="flex gap-4">
-          <Button type="submit" disabled={isSubmitting} className="flex-1">
-            {isSubmitting ? "Submitting..." : "Submit Registration"}
+        <div className="flex gap-4 pt-4">
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            className="flex-1 rounded-full py-4 text-lg font-bold bg-gradient-to-r from-[#d14f4f] to-red-500 hover:from-red-500 hover:to-[#d14f4f] transform hover:scale-105 transition-all duration-200 shadow-lg text-white"
+          >
+            {isSubmitting ? "🎵 Sending Your Info..." : "🚀 Let's Rock & Roll!"}
           </Button>
-          <Button type="reset" variant="outline">
-            Reset Form
+          <Button
+            type="reset"
+            variant="outline"
+            className="rounded-full px-6 py-4 text-lg font-semibold border-2 hover:scale-105 transition-transform"
+          >
+            🔄 Start Over
           </Button>
         </div>
       </form>

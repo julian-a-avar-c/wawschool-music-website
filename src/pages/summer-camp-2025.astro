@@ -39,54 +39,78 @@ import { supabase } from "@/lib/supabase";
 <Layout title="WAW Music School Camp" class={cn("w-full")}>
   <!-- <Header /> -->
 
-  <main class={cn("col-[fullbleed]", "grid grid-cols-subgrid")}>
+  <main
+    class={cn(
+      "col-[fullbleed]",
+      "grid grid-cols-subgrid",
+      "pb-(--section-padding)",
+      "bg-gradient-to-br from-orange-50 to-red-50",
+    )}
+  >
     <Content80 contentClass="flex flex-col gap-8">
-      <div class="flex flex-col py-4 gap-y-4">
-        <img src="/logo.jpeg" class="max-w-[600px] self-center" />
-        <div class="text-3xl text-center">Join us for Summer Music Fun!</div>
-        <h1 class="text-7xl text-center">Waw Music's Summer Camp is back!</h1>
+      <div
+        class="flex flex-col py-8 gap-y-6 p-8 rounded-3xl bg-gradient-to-br from-white to-orange-50 border-2 border-[#d14f4f]/20 shadow-xl"
+      >
+        <div class="text-6xl text-center animate-bounce">🎵</div>
+        <img
+          src="/logo.jpeg"
+          class="max-w-[500px] self-center rounded-2xl shadow-lg"
+        />
+        <div
+          class="text-4xl text-center font-bold text-[#d14f4f] animate-pulse"
+        >
+          ✨ Join us for Summer Music Magic! ✨
+        </div>
+        <h1
+          class="text-6xl lg:text-7xl text-center font-bold bg-gradient-to-r from-[#d14f4f] to-red-500 bg-clip-text text-transparent"
+        >
+          WAW Music's Summer Camp is back! 🎸
+        </h1>
       </div>
 
-      <p class="text-center">
-        Explore music, rhythm, and creativity in a nurturing, performance-free
-        environment led by Carla Campopiano and the WAW team.
-      </p>
+      <div
+        class="text-center p-6 rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 border-2 border-[#d14f4f]/30"
+      >
+        <div class="text-2xl mb-4">🌟</div>
+        <p class="text-xl text-gray-700 leading-relaxed">
+          Get ready for an amazing musical adventure! 🎶 Explore music, rhythm,
+          and creativity in our super fun, no-pressure environment with the
+          wonderful Carla Campopiano and our fantastic WAW team. Let's make some
+          beautiful music together! 💫
+        </p>
+      </div>
 
-      <div class="flex flex-col lg:grid grid-cols-2 gap-16 lg:items-start">
-        <div class="flex flex-col max-h-full">
-          <div class="flex-1 overflow-hidden">
-            <GalleryCarousel client:only="react" />
+      <div class="flex flex-col lg:grid grid-cols-2 gap-8 lg:items-start">
+        <div
+          class="p-6 rounded-3xl bg-gradient-to-br from-white to-red-50 border-2 border-[#d14f4f]/20 shadow-lg"
+        >
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-2">📸</div>
+            <h3 class="text-2xl font-bold text-[#d14f4f] mb-2">
+              Check Out Our Amazing Adventures! 🎨
+            </h3>
+            <p class="text-red-600">
+              Take a peek at all the fun we've been having at WAW Music!
+            </p>
           </div>
-          <div class="flex items-start gap-2">
-            <a
-              href="data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0APRODID:-//WAW Music School//Summer Camp//EN%0ABEGIN:VEVENT%0ADTSTART:20250630T090000%0ADTEND:20250702T150000%0ASUMMARY:WAW Music's Summer Camp%0ADESCRIPTION:Explore music, rhythm, and creativity in a nurturing, performance-free environment led by Carla Campopiano and the WAW team.%0AEND:VEVENT%0AEND:VCALENDAR"
-              download="waw-summer-camp-2025.ics"
-            >
-              <Icon class="inline text-xl" name="fa6-solid:calendar" />
-              <ul>
-                <li>June 30&ndash;July 2</li>
-                <li>9am&ndash;3pm</li>
-              </ul>
-            </a>
-          </div>
-          <ul>
-            <li>
-              <a href="https://www.carlacampopiano.com"
-                ><Icon class="inline" name="fa6-solid:globe" /> carlacampopiano.com</a
-              >
-            </li>
-            <li>
-              <a href="https://www.instagram.com"
-                ><Icon class="inline" name="fa6-brands:instagram" /> @WAWmusicschool</a
-              >
-            </li>
-          </ul>
+          <GalleryCarousel client:only="react" />
         </div>
 
-        <BandSignUpForm client:only="react" />
+        <div class="p-2">
+          <div class="text-center mb-6">
+            <div class="text-4xl mb-2">🎪</div>
+            <h3 class="text-2xl font-bold text-[#d14f4f] mb-2">
+              Ready to Join the Fun? 🚀
+            </h3>
+            <p class="text-red-600">
+              Let's get you signed up for the most awesome summer camp ever!
+            </p>
+          </div>
+          <BandSignUpForm client:only="react" />
+        </div>
       </div>
     </Content80>
   </main>
-</Layout>
 
-<Footer />
+  <Footer />
+</Layout>
