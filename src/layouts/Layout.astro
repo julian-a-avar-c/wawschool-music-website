@@ -111,6 +111,31 @@ const documentTitle =
     /* Add subtle floating animation to the background */
     position: relative;
     overflow-x: hidden;
+
+    @media (width <= 40rem) {
+      --bleed-width: 4px;
+      --content-width: calc(100%-var(--bleed-width));
+    }
+    @media (40rem <= width <= 48rem) {
+      --bleed-width: 1fr;
+      --content-width: 40rem /* 640px */;
+    }
+    @media (48rem <= width <= 64rem) {
+      --bleed-width: 1fr;
+      --content-width: 48rem /* 768px */;
+    }
+    @media (64rem <= width <= 80rem) {
+      --bleed-width: 1fr;
+      --content-width: 64rem /* 1024px */;
+    }
+    @media (80rem <= width <= 96rem) {
+      --bleed-width: 1fr;
+      --content-width: 80rem /* 1280px */;
+    }
+    @media (96rem <= width) {
+      --bleed-width: 1fr;
+      --content-width: 96rem /* 1536px */;
+    }
   }
 
   /* Friendly floating elements */
@@ -153,30 +178,5 @@ const documentTitle =
     66% {
       transform: translate(-20px, 20px) rotate(-1deg);
     }
-  }
-
-  @media (width <= 40rem) {
-    --bleed-width: 4px;
-    --content-width: calc(100%-var(--bleed-width));
-  }
-  @media (40rem <= width <= 48rem) {
-    --bleed-width: 1fr;
-    --content-width: 40rem /* 640px */;
-  }
-  @media (48rem <= width <= 64rem) {
-    --bleed-width: 1fr;
-    --content-width: 48rem /* 768px */;
-  }
-  @media (64rem <= width <= 80rem) {
-    --bleed-width: 1fr;
-    --content-width: 64rem /* 1024px */;
-  }
-  @media (80rem <= width <= 96rem) {
-    --bleed-width: 1fr;
-    --content-width: 80rem /* 1280px */;
-  }
-  @media (96rem <= width) {
-    --bleed-width: 1fr;
-    --content-width: 96rem /* 1536px */;
   }
 </style>
