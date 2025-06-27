@@ -30,6 +30,27 @@ import {
   CarouselItem,
 } from "@/components/my-ui/carousel";
 import { GalleryCarousel } from "@/components/my-ui/GalleryCarousel";
+
+import { supabase } from "@/lib/supabase";
+
+const { data, error } = await supabase
+  .from("summer-camp-2025-funnel")
+  .insert([
+    {
+      guardian_first: "",
+      guardian_last: "",
+      phone: "",
+      alt_phone: "",
+      email: "",
+      student_first: "",
+      student_last: "",
+      student_age: 0,
+      instrument: "",
+      is_online: false,
+      allergies: "",
+    },
+  ])
+  .select();
 ---
 
 <Layout title="WAW Music School Camp" class={cn("w-full")}>
@@ -48,12 +69,12 @@ import { GalleryCarousel } from "@/components/my-ui/GalleryCarousel";
         environment led by Carla Campopiano and the WAW team.
       </p>
 
-      <div class="grid grid-cols-2">
-        <ul>
-          <li>June 30&ndash;July 2</li>
-          <li>9am&ndash;3pm</li>
-        </ul>
+      <div class="flex flex-col lg:grid grid-cols-2">
         <div>
+          <ul>
+            <li>June 30&ndash;July 2</li>
+            <li>9am&ndash;3pm</li>
+          </ul>
           <ul>
             <li>
               <a href="https://www.carlacampopiano.com"
@@ -66,14 +87,9 @@ import { GalleryCarousel } from "@/components/my-ui/GalleryCarousel";
               >
             </li>
           </ul>
-          <div>
-            <Button>sign up</Button> today!
-          </div>
+          <GalleryCarousel client:only="react" />
         </div>
-      </div>
 
-      <div class="grid grid-cols-2">
-        <GalleryCarousel client:only="react"/>
         <BandSignUpForm client:only="react" />
       </div>
     </Content80>
