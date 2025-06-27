@@ -62,7 +62,7 @@ export default function BandSignUpForm() {
       email: "",
       student_first: "",
       student_last: "",
-      student_age: 0,
+      student_age: 10,
       instrument: "",
       is_online: false,
       allergies: "",
