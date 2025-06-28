@@ -25,7 +25,7 @@ type Config = {
   links: {
     [type in
       | "site"
-      | "linkedin"
+      // | "linkedin"
       | "instagram"
       | "phone"
       | "email"
@@ -47,13 +47,13 @@ const config: Config = {
   links: {
     site: {
       icon: "fa6-solid:globe",
-      href: "https://pacsllc.net",
+      href: "https://music.wawschool.net/",
     },
-    linkedin: {
-      icon: "fa6-brands:linkedin",
-      value: "pacsllc",
-      href: "https://www.linkedin.com/company/pacsllc/",
-    },
+    // linkedin: {
+    //   icon: "fa6-brands:linkedin",
+    //   value: "pacsllc",
+    //   href: "https://www.linkedin.com/company/pacsllc/",
+    // },
     instagram: {
       icon: "fa6-brands:instagram",
       value: "pacs_llc",

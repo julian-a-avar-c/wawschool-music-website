@@ -118,7 +118,7 @@ export function HeaderNavSheet({ class: className }: HeaderNavSheetProps) {
           <address className="not-italic">
             <ul className="flex flex-col gap-2">
               {[
-                config.links.linkedin,
+                // config.links.linkedin,
                 config.links.instagram,
                 config.links.phone,
                 config.links.email,
