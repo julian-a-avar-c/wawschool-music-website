@@ -5,6 +5,7 @@ import {
   CarouselItem,
   type CarouselApi,
 } from "@/components/my-ui/carousel";
+import { cn } from "@/lib/utils";
 
 export function GalleryCarousel() {
   const [api, setApi] = useState<CarouselApi>();
@@ -41,7 +42,7 @@ export function GalleryCarousel() {
   }, [api]);
 
   return (
-    <div className="w-full mx-auto aspect-[4/3] rounded-3xl overflow-hidden border-2 border-[#d14f4f]/20 shadow-lg">
+    <div className="w-full mx-auto aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
       <Carousel setApi={setApi} className="relative h-full">
         <CarouselContent className="h-full rounded-3xl">
           <CarouselItem>
@@ -49,7 +50,7 @@ export function GalleryCarousel() {
               <img
                 src="/fabiana-1.jpg"
                 alt="Fabiana - Image 1"
-                className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white"
+                className="w-full h-full object-cover rounded-2xl shadow-xl"
               />
             </div>
           </CarouselItem>
@@ -58,7 +59,7 @@ export function GalleryCarousel() {
               <img
                 src="/fabiana-2.jpg"
                 alt="Fabiana - Image 2"
-                className="w-full h-full object-cover rounded-2xl shadow-xl border-2 border-white object-top"
+                className="w-full h-full object-cover rounded-2xl shadow-xl object-top"
               />
             </div>
           </CarouselItem>
@@ -68,11 +69,13 @@ export function GalleryCarousel() {
           {Array.from({ length: count }, (_, index) => (
             <div
               key={index}
-              className={`w-3 h-3 rounded-full transition-all duration-300 border-2 border-white ${
-                index + 1 === current
-                  ? "bg-[#d14f4f] shadow-lg scale-125"
-                  : "bg-white/70 hover:bg-white/90"
-              }`}
+              className={cn(
+                "w-3 h-3 rounded-full transition-all duration-300",
+                {
+                  "bg-[#d14f4f] shadow-lg scale-125": index + 1 === current,
+                  "bg-white/70 hover:bg-white/90": index + 1 !== current,
+                },
+              )}
             />
           ))}
         </div>

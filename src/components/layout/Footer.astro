@@ -34,14 +34,14 @@ import { Icon } from "astro-icon/components";
           class="flex items-center gap-3 hover:scale-105 transition-all duration-200 bg-white/20 px-4 py-2 rounded-full"
         >
           <Icon name="fa6-solid:globe" class="text-lg" />
-          🌐 carlacampopiano.com
+          carlacampopiano.com
         </a>
         <a
           href="https://www.instagram.com/WAWmusicschool"
           class="flex items-center gap-3 hover:scale-105 transition-all duration-200 bg-white/20 px-4 py-2 rounded-full"
         >
           <Icon name="fa6-brands:instagram" class="text-lg" />
-          📸 @WAWmusicschool
+          @WAWmusicschool
         </a>
       </div>
     </div>
@@ -50,30 +50,42 @@ import { Icon } from "astro-icon/components";
     <div
       class="flex flex-col items-center md:items-end gap-6 max-w-md w-full md:w-auto p-6 rounded-3xl bg-white/10 backdrop-blur-sm border border-white/20"
     >
-      <div class="text-center md:text-right">
-        <h3
-          class="text-2xl font-bold mb-3 flex items-center justify-center md:justify-end gap-2"
-        >
-          ✨ Stay in the Musical Loop! ✨
+      <div class="text-center">
+        <h3 class="text-2xl font-bold flex items-center justify-center gap-2">
+          Stay in the Musical Loop!
         </h3>
         <p class="text-base">
-          🎶 Join our awesome community and be the first to know about amazing
-          events and fun music programs! 💫
+          Join our awesome community and be the first to know about amazing
+          events and fun music programs!
         </p>
       </div>
 
       <form class="flex flex-col sm:flex-row gap-3 w-full">
         <input
           type="email"
-          placeholder="✉️ Your email for musical updates!"
+          placeholder="Your email"
           required
-          class="flex-1 px-6 py-4 rounded-2xl border-2 border-white/30 text-gray-900 placeholder-gray-500 focus:ring-4 focus:ring-white/50 focus:outline-none focus:scale-105 transition-all duration-200 bg-white/95"
+          class={cn(
+            "flex-4 px-6 py-4 rounded-2xl",
+            "border-2 border-white/30 text-gray-900 placeholder-gray-500",
+            "focus:ring-4 focus:ring-white/50 focus:outline-none",
+            "focus:scale-105 transition-all duration-200 bg-white/95",
+          )}
         />
         <button
           type="submit"
-          class="px-8 py-4 bg-white text-[#d14f4f] font-bold rounded-2xl hover:bg-gray-100 hover:scale-105 transition-all duration-200 shadow-lg whitespace-nowrap border-2 border-white"
+          class={cn(
+            "flex-1",
+            "px-8 py-4",
+            "bg-white text-[#d14f4f] font-bold",
+            "rounded-2xl",
+            "hover:bg-gray-100 hover:scale-105",
+            "transition-all duration-200",
+            "shadow-lg whitespace-nowrap",
+            "border-2 border-white",
+          )}
         >
-          🚀 Join the Fun!
+          Join the Fun!
         </button>
       </form>
     </div>
@@ -84,10 +96,10 @@ import { Icon } from "astro-icon/components";
     class="col-[content] mt-12 pt-8 border-t border-white/30 text-center text-base"
   >
     <div class="flex items-center justify-center gap-2 mb-2">
-      🎸 Made with love for music lovers everywhere 🎵
+      Made with love for music lovers everywhere
     </div>
     <div class="opacity-80">
-      © 2025 WAW Music School. All rights reserved. Keep on rocking! 🤘
+      © 2025 WAW Music School. All rights reserved. Keep on rocking!
     </div>
   </div>
 </footer>

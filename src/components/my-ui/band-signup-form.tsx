@@ -26,6 +26,7 @@ import { supabase } from "@/lib/supabase";
 import { useState } from "react";
 import { toast } from "sonner";
 import { Icon } from "@iconify/react";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   guardian_first: z.string().min(1, "Guardian first name is required"),
@@ -142,7 +143,7 @@ export default function BandSignUpForm() {
             variant="outline"
             className="rounded-full px-8 py-3 text-lg font-semibold hover:scale-105 transition-transform"
           >
-            🌟 Register Another Rockstar!
+            Register Another Rockstar!
           </Button>
         </div>
         <div className="p-8 text-center border rounded-lg bg-green-50 border-green-200">
@@ -166,7 +167,10 @@ export default function BandSignUpForm() {
       <form
         onSubmit={form.handleSubmit(onSubmit)}
         onReset={onReset}
-        className="space-y-8 @container p-6 rounded-3xl bg-gradient-to-br from-orange-50 to-red-50 border-2 border-[#d14f4f]/30 shadow-xl"
+        className={cn(
+          "text-[#d14f4f]",
+          "space-y-8 @container p-6 rounded-3xl bg-gradient-to-br from-orange-50 to-red-50 border-2 border-[#d14f4f]/30 shadow-xl",
+        )}
       >
         <div className="space-y-6">
           <div className="text-center">
@@ -229,7 +233,7 @@ export default function BandSignUpForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="📞 Your best phone number"
+                    placeholder="Your best phone number"
                     type="tel"
                     className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                     {...field}
@@ -247,7 +251,7 @@ export default function BandSignUpForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="📱 Got another number? (totally optional!)"
+                    placeholder="Got another number? (totally optional!)"
                     type="tel"
                     className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                     {...field}
@@ -265,7 +269,7 @@ export default function BandSignUpForm() {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="📧 Your email (where we'll send the fun stuff!)"
+                    placeholder="Your email (where we'll send the fun stuff!)"
                     type="email"
                     className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                     {...field}
@@ -279,12 +283,6 @@ export default function BandSignUpForm() {
 
         <div className="space-y-6">
           <div className="text-center">
-            <div className="text-4xl mb-2 flex justify-center">
-              <Icon
-                icon="fa6-solid:guitar"
-                className="w-12 h-12 text-[#d14f4f]"
-              />
-            </div>
             <h3 className="text-2xl font-bold text-[#d14f4f] mb-2 flex items-center justify-center gap-2">
               Now, About Our Future Rockstar!{" "}
               <Icon icon="fa6-solid:star" className="w-6 h-6" />
@@ -335,19 +333,22 @@ export default function BandSignUpForm() {
             name="student_age"
             render={({ field }) => (
               <FormItem>
-                <FormControl>
-                  <Input
-                    placeholder="🎂 How old is our future star?"
-                    type="number"
-                    min="1"
-                    max="18"
-                    className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
-                    {...field}
-                    onChange={(e) =>
-                      field.onChange(parseInt(e.target.value) || 0)
-                    }
-                  />
-                </FormControl>
+                <div className="grid grid-cols-[1fr_auto] items-baseline gap-2">
+                  <FormControl>
+                    <Input
+                      placeholder="How old is our future star?"
+                      type="number"
+                      min="1"
+                      max="18"
+                      className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
+                      {...field}
+                      onChange={(e) =>
+                        field.onChange(parseInt(e.target.value) || 0)
+                      }
+                    />
+                  </FormControl>
+                  years old
+                </div>
                 <FormMessage />
               </FormItem>
             )}
@@ -450,7 +451,7 @@ export default function BandSignUpForm() {
                 <div className="space-y-1 leading-none">
                   <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
                     <Icon icon="fa6-solid:handshake" className="w-5 h-5" />
-                    Let's Make This Official! *
+                    Let's Make This Official!
                   </FormLabel>
                   <FormDescription className="text-red-600 flex items-center gap-2">
                     I'm excited to agree to the privacy policy and terms of
