@@ -45,24 +45,40 @@ export function GalleryCarousel() {
     <div className="w-full mx-auto aspect-[4/3] rounded-3xl overflow-hidden shadow-lg">
       <Carousel setApi={setApi} className="relative h-full">
         <CarouselContent className="h-full rounded-3xl">
-          <CarouselItem>
-            <div className="p-2 h-full flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-50">
-              <img
-                src="/fabiana-1.jpg"
-                alt="Fabiana - Image 1"
-                className="w-full h-full object-cover rounded-2xl shadow-xl"
-              />
-            </div>
-          </CarouselItem>
-          <CarouselItem>
-            <div className="p-2 h-full flex items-center justify-center bg-gradient-to-br from-red-50 to-orange-50">
-              <img
-                src="/fabiana-2.jpg"
-                alt="Fabiana - Image 2"
-                className="w-full h-full object-cover rounded-2xl shadow-xl object-top"
-              />
-            </div>
-          </CarouselItem>
+          {[
+            {
+              src: "/images/waw-promo-1.png",
+              alt: "WAW Promo 1",
+            },
+            {
+              src: "/images/waw-promo-2.png",
+              alt: "WAW Promo 2",
+            },
+            {
+              src: "/images/waw-promo-3.png",
+              alt: "WAW Promo 3",
+            },
+            {
+              src: "/images/waw-promo-4.png",
+              alt: "WAW Promo 4",
+            },
+            {
+              src: "/images/waw-promo-5.png",
+              alt: "WAW Promo 5",
+            },
+          ].map((item, index) => (
+            <CarouselItem key={`carousel-item-${index}`}>
+              <div className="p-2 h-full flex items-center justify-center bg-gradient-to-br from-orange-50 to-red-50">
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  className={cn(
+                    "w-full h-full object-cover rounded-2xl",
+                  )}
+                />
+              </div>
+            </CarouselItem>
+          ))}
         </CarouselContent>
 
         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 bg-black/20 backdrop-blur-sm px-4 py-2 rounded-full">
