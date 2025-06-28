@@ -42,8 +42,8 @@ type Config = {
 };
 
 const config: Config = {
-  title: "Process & Automation Consultancy Solutions",
-  shortTitle: "PACS LLC",
+  title: "World Arts Warehouse School of Music",
+  shortTitle: "WAW School of Music",
   links: {
     site: {
       icon: "fa6-solid:globe",
@@ -61,17 +61,17 @@ const config: Config = {
     },
     phone: {
       icon: "fa6-solid:phone",
-      value: "+1 (848) 330-6536",
-      href: "tel:+18483306536",
+      value: "+1 (773) 680-0682",
+      href: "tel:+7736800682",
     },
     email: {
       icon: "fa6-solid:envelope",
-      value: "info@pacsllc.net",
-      href: "mailto:info@pacsllc.net",
+      value: "carla.campopiano@wawschool.net",
+      href: "mailto:carla.campopiano@wawschool.net",
     },
     location: {
       icon: "fa6-solid:map-location",
-      value: "NY / NJ",
+      value: "NJ",
     },
   },
   nav: {
