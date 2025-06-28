@@ -43,14 +43,11 @@ const formSchema = z.object({
   instrument: z.string().min(1, "Please select an instrument"),
   is_online: z.boolean(),
   allergies: z.string().optional(),
-  // privacy: z
-  //   .boolean()
-  //   .refine((val) => val === true, "You must agree to the privacy policy"),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
 
-export default function BandSignUpForm() {
+export default function BandSignupForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
@@ -68,7 +65,6 @@ export default function BandSignUpForm() {
       instrument: "",
       is_online: false,
       allergies: "",
-      // privacy: false,
     },
   });
 
@@ -195,7 +191,7 @@ export default function BandSignUpForm() {
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="What should we call you? (First name)"
+                      placeholder="First name"
                       className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                       {...field}
                     />
@@ -212,7 +208,7 @@ export default function BandSignUpForm() {
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="Your family name"
+                      placeholder="Last name"
                       className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                       {...field}
                     />
@@ -289,7 +285,7 @@ export default function BandSignUpForm() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-rows-2 lg:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="student_first"
@@ -297,7 +293,7 @@ export default function BandSignUpForm() {
                 <FormItem>
                   <FormControl>
                     <Input
-                      placeholder="Student's awesome first name"
+                      placeholder="Student's first name"
                       className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3"
                       {...field}
                     />
@@ -429,35 +425,6 @@ export default function BandSignUpForm() {
             )}
           />
         </div>
-
-        {/* <div className="space-y-6">
-          <FormField
-            control={form.control}
-            name="privacy"
-            render={({ field }) => (
-              <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4 rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 border-2 border-[#d14f4f]/30">
-                <FormControl>
-                  <Checkbox
-                    checked={field.value}
-                    onCheckedChange={field.onChange}
-                    className="rounded-lg ring-1"
-                  />
-                </FormControl>
-                <div className="space-y-1 leading-none">
-                  <FormLabel className=" font-semibold flex items-center gap-2">
-                    <Icon icon="fa6-solid:handshake" className="w-5 h-5" />
-                    Let's Make This Official!
-                  </FormLabel>
-                  <FormDescription className="text-red-600 flex items-center gap-2">
-                    I'm excited to agree to the privacy policy and terms of
-                    service - let's rock together safely!
-                  </FormDescription>
-                  <FormMessage />
-                </div>
-              </FormItem>
-            )}
-          />
-        </div> */}
 
         <div className="flex gap-4 pt-4">
           <Button
