@@ -43,9 +43,9 @@ const formSchema = z.object({
   instrument: z.string().min(1, "Please select an instrument"),
   is_online: z.boolean(),
   allergies: z.string().optional(),
-  privacy: z
-    .boolean()
-    .refine((val) => val === true, "You must agree to the privacy policy"),
+  // privacy: z
+  //   .boolean()
+  //   .refine((val) => val === true, "You must agree to the privacy policy"),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -68,7 +68,7 @@ export default function BandSignUpForm() {
       instrument: "",
       is_online: false,
       allergies: "",
-      privacy: false,
+      // privacy: false,
     },
   });
 
@@ -430,7 +430,7 @@ export default function BandSignUpForm() {
           />
         </div>
 
-        <div className="space-y-6">
+        {/* <div className="space-y-6">
           <FormField
             control={form.control}
             name="privacy"
@@ -457,7 +457,7 @@ export default function BandSignUpForm() {
               </FormItem>
             )}
           />
-        </div>
+        </div> */}
 
         <div className="flex gap-4 pt-4">
           <Button
