@@ -51,32 +51,36 @@ import { supabase } from "@/lib/supabase";
       <div
         class="flex flex-col py-8 gap-y-6 p-8 rounded-3xl bg-gradient-to-br from-white to-orange-50 border-2 border-[#d14f4f]/20 shadow-xl"
       >
-        <div class="text-6xl text-center animate-bounce">🎵</div>
-        <img
-          src="/logo.jpeg"
-          class="max-w-[500px] self-center rounded-2xl shadow-lg"
-        />
+        <img src="/logo.jpeg" class="max-w-[500px] self-center rounded-2xl" />
         <div
           class="text-4xl text-center font-bold text-[#d14f4f] animate-pulse"
         >
-          ✨ Join us for Summer Music Magic! ✨
+          <Icon
+            name="lucide:sparkles"
+            class="w-12 h-12 text-[#d14f4f] inline"
+          />{" "}<span>Join us for Summer Music Magic!</span>{" "}<Icon
+            name="lucide:sparkles"
+            class="w-12 h-12 text-[#d14f4f] inline"
+          />
         </div>
         <h1
           class="text-6xl lg:text-7xl text-center font-bold bg-gradient-to-r from-[#d14f4f] to-red-500 bg-clip-text text-transparent"
         >
-          WAW Music's Summer Camp is back! 🎸
+          <span>WAW Music's Summer Camp is back!</span>{" "}<Icon
+            name="fa6-solid:guitar"
+            class="w-12 h-12 text-[#d14f4f] inline"
+          />
         </h1>
       </div>
 
       <div
         class="text-center p-6 rounded-2xl bg-gradient-to-r from-red-50 to-orange-50 border-2 border-[#d14f4f]/30"
       >
-        <div class="text-2xl mb-4">🌟</div>
         <p class="text-xl text-gray-700 leading-relaxed">
-          Get ready for an amazing musical adventure! 🎶 Explore music, rhythm,
-          and creativity in our super fun, no-pressure environment with the
+          Get ready for an amazing musical adventure! Explore music, rhythm, and
+          creativity in our super fun, no-pressure environment with the
           wonderful Carla Campopiano and our fantastic WAW team. Let's make some
-          beautiful music together! 💫
+          beautiful music together!
         </p>
       </div>
 

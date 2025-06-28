@@ -25,6 +25,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/lib/supabase";
 import { useState } from "react";
 import { toast } from "sonner";
+import { Icon } from "@iconify/react";
 
 const formSchema = z.object({
   guardian_first: z.string().min(1, "Guardian first name is required"),
@@ -119,14 +120,22 @@ export default function BandSignUpForm() {
     return (
       <div>
         <div className="p-8 text-center border-2 rounded-3xl bg-gradient-to-br from-green-50 to-green-100 border-green-200 shadow-lg">
-          <div className="text-6xl mb-4">🎉</div>
-          <h3 className="text-2xl font-bold text-green-700 mb-3">
-            Woohoo! You're All Set! 🎵
+          <div className="text-6xl mb-4 flex justify-center">
+            <Icon
+              icon="fa6-solid:party-horn"
+              className="w-16 h-16 text-green-600"
+            />
+          </div>
+          <h3 className="text-2xl font-bold text-green-700 mb-3 flex items-center justify-center gap-2">
+            Woohoo! You're All Set!{" "}
+            <Icon icon="fa6-solid:music" className="w-6 h-6" />
           </h3>
-          <p className="text-green-600 mb-6 text-lg">
+          <p className="text-green-600 mb-6 text-lg flex items-center justify-center gap-2 flex-wrap">
             Thanks for joining our musical adventure! We can't wait to rock out
             with you at WAW Music's Summer Camp. Keep an eye on your inbox -
-            we'll be sending some exciting details your way soon! 🎸✨
+            we'll be sending some exciting details your way soon!
+            <Icon icon="fa6-solid:guitar" className="w-5 h-5" />
+            <Icon icon="fa6-solid:sparkles" className="w-5 h-5" />
           </p>
           <Button
             onClick={onReset}
@@ -161,9 +170,15 @@ export default function BandSignUpForm() {
       >
         <div className="space-y-6">
           <div className="text-center">
-            <div className="text-4xl mb-2">👨‍👩‍👧‍👦</div>
-            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2">
-              Tell Us About Your Family! 💫
+            <div className="text-4xl mb-2 flex justify-center">
+              <Icon
+                icon="fa6-solid:users"
+                className="w-12 h-12 text-[#d14f4f]"
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2 flex items-center justify-center gap-2">
+              Tell Us About Your Family!{" "}
+              <Icon icon="fa6-solid:sparkles" className="w-6 h-6" />
             </h3>
             <p className="text-red-600">
               We'd love to get to know the awesome guardian behind this future
@@ -264,9 +279,15 @@ export default function BandSignUpForm() {
 
         <div className="space-y-6">
           <div className="text-center">
-            <div className="text-4xl mb-2">🎸</div>
-            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2">
-              Now, About Our Future Rockstar! 🌟
+            <div className="text-4xl mb-2 flex justify-center">
+              <Icon
+                icon="fa6-solid:guitar"
+                className="w-12 h-12 text-[#d14f4f]"
+              />
+            </div>
+            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2 flex items-center justify-center gap-2">
+              Now, About Our Future Rockstar!{" "}
+              <Icon icon="fa6-solid:star" className="w-6 h-6" />
             </h3>
             <p className="text-red-600">
               Time to learn about the amazing student who's ready to rock!
@@ -376,12 +397,15 @@ export default function BandSignUpForm() {
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel className="text-[#d14f4f] font-semibold">
-                    💻 Online lessons sound cool too!
+                  <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
+                    <Icon icon="fa6-solid:laptop" className="w-4 h-4" />
+                    Online lessons sound cool too!
                   </FormLabel>
-                  <FormDescription className="text-red-600">
+                  <FormDescription className="text-red-600 flex items-center gap-2">
                     Would you like to explore online lesson options? We make
-                    virtual learning super fun! 🌐✨
+                    virtual learning super fun!
+                    <Icon icon="fa6-solid:globe" className="w-4 h-4" />
+                    <Icon icon="fa6-solid:sparkles" className="w-4 h-4" />
                   </FormDescription>
                 </div>
               </FormItem>
@@ -394,11 +418,12 @@ export default function BandSignUpForm() {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
-                  🏥 Keeping Everyone Safe & Happy
+                  <Icon icon="fa6-solid:heart-pulse" className="w-5 h-5" />
+                  Keeping Everyone Safe & Happy
                 </FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="Any allergies or medical info we should know about? We want to make sure everyone has the best, safest time! (totally optional, but helpful) 💜"
+                    placeholder="Any allergies or medical info we should know about? We want to make sure everyone has the best, safest time! (totally optional, but helpful)"
                     className="min-h-[100px] rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f]"
                     {...field}
                   />
@@ -423,12 +448,15 @@ export default function BandSignUpForm() {
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel className="text-[#d14f4f] font-semibold">
-                    🤝 Let's Make This Official! *
+                  <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
+                    <Icon icon="fa6-solid:handshake" className="w-5 h-5" />
+                    Let's Make This Official! *
                   </FormLabel>
-                  <FormDescription className="text-red-600">
+                  <FormDescription className="text-red-600 flex items-center gap-2">
                     I'm excited to agree to the privacy policy and terms of
-                    service - let's rock together safely! 🎸💫
+                    service - let's rock together safely!
+                    <Icon icon="fa6-solid:guitar" className="w-4 h-4" />
+                    <Icon icon="fa6-solid:sparkles" className="w-4 h-4" />
                   </FormDescription>
                   <FormMessage />
                 </div>
@@ -441,16 +469,27 @@ export default function BandSignUpForm() {
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="flex-1 rounded-full py-4 text-lg font-bold bg-gradient-to-r from-[#d14f4f] to-red-500 hover:from-red-500 hover:to-[#d14f4f] transform hover:scale-105 transition-all duration-200 shadow-lg text-white"
+            className="flex-1 rounded-full py-4 text-lg font-bold bg-gradient-to-r from-[#d14f4f] to-red-500 hover:from-red-500 hover:to-[#d14f4f] transform hover:scale-105 transition-all duration-200 shadow-lg text-white flex items-center justify-center gap-2"
           >
-            {isSubmitting ? "🎵 Sending Your Info..." : "🚀 Let's Rock & Roll!"}
+            {isSubmitting ? (
+              <>
+                <Icon icon="fa6-solid:music" className="w-5 h-5" />
+                Sending Your Info...
+              </>
+            ) : (
+              <>
+                <Icon icon="fa6-solid:rocket" className="w-5 h-5" />
+                Let's Rock & Roll!
+              </>
+            )}
           </Button>
           <Button
             type="reset"
             variant="outline"
-            className="rounded-full px-6 py-4 text-lg font-semibold border-2 hover:scale-105 transition-transform"
+            className="rounded-full px-6 py-4 text-lg font-semibold border-2 hover:scale-105 transition-transform flex items-center gap-2"
           >
-            🔄 Start Over
+            <Icon icon="fa6-solid:arrow-rotate-left" className="w-5 h-5" />
+            Start Over
           </Button>
         </div>
       </form>
