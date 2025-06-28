@@ -175,12 +175,9 @@ export default function BandSignUpForm() {
         <div className="space-y-6">
           <div className="text-center">
             <div className="text-4xl mb-2 flex justify-center">
-              <Icon
-                icon="fa6-solid:users"
-                className="w-12 h-12 text-[#d14f4f]"
-              />
+              <Icon icon="fa6-solid:users" className="w-12 h-12 " />
             </div>
-            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2 flex items-center justify-center gap-2">
+            <h3 className="text-2xl font-bold  mb-2 flex items-center justify-center gap-2">
               Tell Us About Your Family!{" "}
               <Icon icon="fa6-solid:sparkles" className="w-6 h-6" />
             </h3>
@@ -283,7 +280,7 @@ export default function BandSignUpForm() {
 
         <div className="space-y-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-[#d14f4f] mb-2 flex items-center justify-center gap-2">
+            <h3 className="text-2xl font-bold  mb-2 flex items-center justify-center gap-2">
               Now, About Our Future Rockstar!{" "}
               <Icon icon="fa6-solid:star" className="w-6 h-6" />
             </h3>
@@ -364,8 +361,8 @@ export default function BandSignUpForm() {
                     onValueChange={field.onChange}
                     defaultValue={field.value}
                   >
-                    <SelectTrigger className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3">
-                      <SelectValue placeholder="🎵 What instrument makes their heart sing?" />
+                    <SelectTrigger className="rounded-2xl border-2 border-[#d14f4f]/30 focus:border-[#d14f4f] py-3 w-full">
+                      <SelectValue placeholder="What instrument will they play during camp?" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="guitar">Guitar</SelectItem>
@@ -394,19 +391,17 @@ export default function BandSignUpForm() {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    className="rounded-lg"
+                    className="rounded-lg ring-1"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
+                  <FormLabel className=" font-semibold flex items-center gap-2">
                     <Icon icon="fa6-solid:laptop" className="w-4 h-4" />
                     Online lessons sound cool too!
                   </FormLabel>
                   <FormDescription className="text-red-600 flex items-center gap-2">
                     Would you like to explore online lesson options? We make
                     virtual learning super fun!
-                    <Icon icon="fa6-solid:globe" className="w-4 h-4" />
-                    <Icon icon="fa6-solid:sparkles" className="w-4 h-4" />
                   </FormDescription>
                 </div>
               </FormItem>
@@ -418,7 +413,7 @@ export default function BandSignUpForm() {
             name="allergies"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
+                <FormLabel className=" font-semibold flex items-center gap-2">
                   <Icon icon="fa6-solid:heart-pulse" className="w-5 h-5" />
                   Keeping Everyone Safe & Happy
                 </FormLabel>
@@ -445,19 +440,17 @@ export default function BandSignUpForm() {
                   <Checkbox
                     checked={field.value}
                     onCheckedChange={field.onChange}
-                    className="rounded-lg"
+                    className="rounded-lg ring-1"
                   />
                 </FormControl>
                 <div className="space-y-1 leading-none">
-                  <FormLabel className="text-[#d14f4f] font-semibold flex items-center gap-2">
+                  <FormLabel className=" font-semibold flex items-center gap-2">
                     <Icon icon="fa6-solid:handshake" className="w-5 h-5" />
                     Let's Make This Official!
                   </FormLabel>
                   <FormDescription className="text-red-600 flex items-center gap-2">
                     I'm excited to agree to the privacy policy and terms of
                     service - let's rock together safely!
-                    <Icon icon="fa6-solid:guitar" className="w-4 h-4" />
-                    <Icon icon="fa6-solid:sparkles" className="w-4 h-4" />
                   </FormDescription>
                   <FormMessage />
                 </div>
